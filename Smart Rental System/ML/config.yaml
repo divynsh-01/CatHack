@@ -1,0 +1,45 @@
+# ML pipeline configuration for Smart Rental Tracking System
+paths:
+  raw_data: ml/data/raw/rental_data.csv
+  processed_data: ml/data/processed/rental_data_clean.csv
+  models_dir: ml/models
+  metrics_dir: ml/models/metrics
+
+targets:
+  overdue_flag: Overdue_Flag
+  utilization_rate: Utilization_Rate
+
+preprocess:
+  drop_columns:
+    - Equipment_ID
+    - Customer_ID
+    - Rental_Cost_USD
+    - Overdue_Fine_USD
+    - Total_Bill_USD
+  # columns to treat as dates (will be parsed and used to craft time features, then dropped)
+  date_columns:
+    - CheckOut_Date
+    - Planned_Return_Date
+    - CheckIn_Date
+  categorical_hint:
+    - Type
+    - Model
+    - GPS_Location
+    - Maintenance_Flag
+    - Rental_Status
+  numeric_hint:
+    - Manufacture_Year
+    - Operating_Hours
+    - Idle_Hours
+    - Fuel_Consumed_Liters
+    - Fuel_Efficiency_L_per_hr
+    - Distance_Traveled_km
+    - Load_Cycles
+    - Breakdowns
+    - Engine_Temp_Max
+    - Hydraulic_Pressure_Max
+
+train:
+  test_size: 0.2
+  random_state: 42
+  n_jobs: -1
