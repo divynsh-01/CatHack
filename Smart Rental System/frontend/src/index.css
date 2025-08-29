@@ -1,0 +1,272 @@
+/* --- AESTHETIC DESIGN SYSTEM V2 (Corrected) --- */
+
+/* --- 1. Global Styles & Variables --- */
+:root {
+  --caterpillar-yellow: #ffde00;
+  --dark-charcoal: #1a1a1a;
+  --background-light: #f7f8fa;
+  --card-bg: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #5f6368;
+  --border-color: #e8eaed;
+  --success-green: #1e8e3e;
+  --danger-red: #d93025;
+  --info-blue: #1a73e8;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-primary);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  padding: 2rem 3rem;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* --- 2. Navbar --- */
+.navbar {
+  background-color: var(--card-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  height: 70px;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+.navbar-brand a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.navbar-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+.navbar-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.navbar-links a:hover {
+  color: var(--text-primary);
+  border-bottom-color: var(--caterpillar-yellow);
+}
+
+/* --- 3. Cards & Sections --- */
+section {
+  background: var(--card-bg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+}
+h2 {
+  font-size: 1.75rem;
+  padding-bottom: 1rem;
+  margin: 0 0 1.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* --- 4. Tables (CORRECTED SECTION) --- */
+.asset-table-container {
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+thead {
+  background-color: var(--dark-charcoal);
+  color: #fff;
+  position: sticky;
+  top: 0;
+}
+tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+tbody tr:hover {
+  background-color: #f7f8fa;
+}
+.status-active { color: var(--success-green); font-weight: 500; }
+.status-idle { color: var(--text-secondary); }
+
+/* --- 5. Homepage & Feature Cards --- */
+.homepage h2 {
+  font-size: 2.5rem;
+  border-bottom: none;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.feature-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+.feature-card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.feature-card h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; }
+.feature-card p { color: var(--text-secondary); line-height: 1.6; margin-top: 0; flex-grow: 1; }
+.feature-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--caterpillar-yellow);
+  color: var(--dark-charcoal);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+.feature-link:hover {
+  transform: scale(1.05);
+}
+
+/* --- 6. Forms, Buttons & Inputs --- */
+.predictor-form, .form-grid, .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: grid;
+}
+.form-group label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+input, select {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s ease;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--caterpillar-yellow);
+  box-shadow: 0 0 0 4px rgba(255, 222, 0, 0.3);
+}
+.form-actions button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+}
+
+/* --- 7. Summary Cards (Asset History) --- */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.summary-card {
+  background: linear-gradient(145deg, #f9f9f9, #ffffff);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+.summary-card h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.summary-card p {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* --- 8. Animations & Final Touches --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.error { color: var(--danger-red); font-weight: bold; text-align: center; }
+
+/* --- Loading Overlay Styles --- */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 16px; /* Match the section's border-radius */
+}
+.loader {
+  border: 8px solid var(--light-gray);
+  border-top: 8px solid var(--caterpillar-yellow);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+.loading-overlay p {
+  margin-top: 1rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Ensure the section is positioned correctly for the overlay */
+#asset-status-section {
+  position: relative;
+}
